@@ -28,7 +28,7 @@ if (login()) {
   let cuotas = 10;
 
   let opcion = prompt(
-    "Qué querés realizar hoy?: \n1- Cuántas cuotas me quedan por pagar de mi préstamo? \n2 - Precancelar cuotas. \n3 - Refinanciar mi préstamo. \n4 - Solicitar nuevo préstamo. - \nPresioná X para finalizar."
+    "Qué querés realizar hoy?: \n1- Cuántas cuotas me quedan por pagar de mi préstamo? \n2 - Precancelar cuotas. \n3 - Refinanciar mi préstamo. \n4 - Solicitar nuevo préstamo \nPresioná X para finalizar."
   );
 
   while (opcion != "X" && opcion != "x") {
@@ -74,11 +74,11 @@ if (login()) {
         let cuotas = prompt(
           "En qué cantidad de cuotas lo querés? Podés elegir entre las siguientes opciones \n1- 6 \n2 - 12 \n3 - 24"
         );
-        let sistema = parseInt(
+        let sistema =
           prompt(
             "Qué sistema querés que apliquemos a tu préstamo? podés elegir entre sistema francés o alemán"
           )
-        );
+            ;
 
         alert(
           "La operación fue relizada exitosamente. Tu nuevo prestamo es de $ " +
@@ -105,24 +105,29 @@ alert("Gracias por operar con PrestaBank!");
 
 
 
-// class Prestamo{
+class Prestamo{
 
-//     constructor(monto, cuotas, sistema, codigo){
-//         this.monto = parseInt(monto);
-//         this.cuotas = parseInt(cuotas);
-//         this.sistema = sistema;
-//         this.codigo = codigo;
-//     }
-// }
+    constructor(monto, cuotas, sistema, codigo){
+        this.monto = parseInt(monto);
+        this.cuotas = parseInt(cuotas);
+        this.sistema = sistema;
+        this.codigo = codigo;
+    }
+}
 
-// aignarCodigo(array){
-//     this.codigo = array.lenght;
-// }
+aignarCodigo(array){
+    this.codigo = array.lenght;
+}
 
-// const prestamos = [
-//     new Prestamo (100000, 6, francés, 1254),
-//     new Prestamo (8000, 6, aleman, 1390),
-//     new Prestamo (172560, 12, francés, 1398),
-//     new Prestamo (234000, 24, alemán, 1456),
-//     new Prestamo (345675, 36, francés, 1567),
-// ]
+const prestamos = [
+    new Prestamo (100000, 6, "francés", 1254),
+    new Prestamo (8000, 6, "alemán", 1390),
+    new Prestamo (172560, 12, "francés", 1398),
+    new Prestamo (234000, 24, "alemán", 1456),
+    new Prestamo (345675, 36, "francés", 1567),
+]
+
+const nuevo = new Prestamo(prestamos[0],prestamos[1],prestamos[2],prestamos[3]);
+
+prestamos.push(nuevo);
+nuevo.aignarCodigo(nuevo);
