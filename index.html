@@ -17,28 +17,29 @@
 
     <link rel="stylesheet" href="css/styles.css" />
 
-    <title>PrestaBank</title>
+    <title>FilmFan</title>
   </head>
   <body>
     <header class="topheader">
       <div class="title">
-        <h1>PRESTABANK</h1>
+        <h1>FilmFan</h1>
       </div>
 
-      <div class="login">
+      <div class="loginb">
         <button type="button" class="btn btn-primary btn-sm toggles" data-bs-toggle="modal"
         data-bs-target="#modalLogin">Log in</button>
       </div>
 
-      <div class="logout">
-        <button type="button" class="btn btn-primary btn-sm d-none toggles">Log Out</button>
+      <div class="logoutb">
+        <button type="button" class="btn btn-primary btn-sm d-none toggles" id="btnLogout">Log Out</button>
       </div>
+      <p id="nombreUsuario" class="d-none toggles"></p>
     </header>
 
     <main class="container">
         <section id="guest" class="toggles">
             
-            <p>Para ingresar al Simulador de Préstamos logueate <span class="linkamodal" data-bs-toggle="modal"
+            <p>Para ingresar al catálogo de películas recomendadas logueate <span class="linkamodal" data-bs-toggle="modal"
                     data-bs-target="#modalLogin">aquí</span></p>
 
 
@@ -72,40 +73,13 @@
         </section>
 
         <section id="logged" class="d-none toggles">
-            <h2>Contenido para usuarios logueados</h2>
-            <p>Te mostramos nuestras mascotas en adopción.</p>
+            <h2>En base a tus preferencias, este es el catálogo recomendado para vos</h2>
+            <p>Películas</p>
             <div id="tarjetas" class="card-group"></div>
         </section>
     </main>
 
 
-    <!-- <div>
-      <h2>Simulador de Préstamos</h2>
-    </div> -->
-
-    <!-- <form>
-      <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Monto</label>
-        <input
-          type="email"
-          class="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-        />
-        <div id="emailHelp" class="form-text">(Máximo 5.000.000)</div>
-      </div>
-      <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Cuotas</label>
-        <select class="form-select" aria-label="Default select example">
-          <option selected></option>
-          <option value="1">6</option>
-          <option value="2">12</option>
-          <option value="3">36</option>
-        </select>
-      </div>
-
-      <button type="submit" class="btn btn-primary">Simular</button>
-    </form> -->
 
     <!-- Link a BST JS -->
     <script
