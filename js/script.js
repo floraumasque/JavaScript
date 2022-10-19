@@ -1,129 +1,93 @@
-// // Esto es un simulador de préstamo existente y refinanciación
+//Fake Databases de Usuarios y Mascotas (En el mundo real esto está en una DB que es accedida a través del backend)
+const usuarios = [{
+  nombre: 'Azul',
+  mail: 'azulperez@mail.com',
+  pass: 'azulcomoelmarazul'
+},
+{
+  nombre: 'Betiana',
+  mail: 'betidicarlo@mail.com',
+  pass: 'sha23AWx!'
+},
+{
+  nombre: 'Carlos',
+  mail: 'lopezcarlosadrian@mail.com',
+  pass: 'sanlore2002'
+}]
 
-let claveGuardada = "hola";
 
-class Prestamo {
+//Todos los elementos del DOM que voy a necesitar
+const mailLogin = document.getElementById('emailLogin'),
+  passLogin = document.getElementById('passwordLogin'),
+  recordar = document.getElementById('recordarme'),
+  btnLogin = document.getElementById('login'),
+  modalEl = document.getElementById('modalLogin'),
+  modal = new bootstrap.Modal(modalEl),
+  contTarjetas = document.getElementById('tarjetas'),
+  toggles = document.querySelectorAll('.toggles');
 
-  constructor(monto, cuotas, sistema, codigo) {
-    this.monto = parseInt(monto);
-    this.cuotas = parseInt(cuotas);
-    this.sistema = sistema;
-    this.codigo = codigo;
+//La función de validar se aprovecha del tipo de return que hace el método find (el objeto si lo encuentra, o undefined si no encuentra ninguno que cumpla con la condición)
+function validarUsuario(usersDB, user, pass) {
+  let encontrado = usersDB.find((userDB) => userDB.mail == user);
+
+  //console.log('Usuario encontrado por validate '+ typeof isFound);
+  if (typeof encontrado === 'undefined') {
+      return false;
+  } else {
+      //si estoy en este punto, quiere decir que el mail existe, sólo queda comparar la contraseña
+      if (encontrado.pass != pass) {
+          return false;
+      } else {
+          return encontrado;
+      }
   }
 }
-const prestamos = [
-  new Prestamo(100000, 6, "francés", 1254),
-  new Prestamo(8000, 6, "alemán", 1390),
-  new Prestamo(172560, 12, "francés", 1398),
-  new Prestamo(234000, 24, "alemán", 1456),
-  new Prestamo(345675, 36, "francés", 1567),
-]
 
-function login() {
-  let ingresar = false;
-
-  for (let i = 2; i >= 0; i--) {
-    let claveUsuario = prompt(
-      "Ingresá tu contraseña. Tenés " +
-      (i + 1) +
-      " intentos antes de bloquearla."
-    );
-
-    if (claveUsuario === claveGuardada) {
-      alert("Usuario logueado exitosamente. Hola Mabel");
-      ingresar = true;
-      break;
-    } else {
-      alert("Contraseña erronea. Te quedan " + i + " intentos.");
-    }
+//Guardamos los datos que recuperamos de la database en el storage
+function guardarDatos(usuarioDB, storage) {
+  const usuario = {
+      'name': usuarioDB.nombre,
+      'user': usuarioDB.mail,
+      'pass': usuarioDB.pass
   }
 
-  return ingresar;
+  storage.setItem('usuario', JSON.stringify(usuario));
 }
 
-if (login()) {
-  let cuotas = 10;
-  let codigo = 1233
+//Cambio el DOM para mostrar el nombre del usuario logueado, usando los datos del storage
+function saludar(usuario) {
+  nombreUsuario.innerHTML = `Bienvenido/a, <span>${usuario.name}</span>`
+}
 
-  let opcion = prompt('Qué querés realizar hoy?: \n1- Cuántas cuotas me quedan por pagar de mi préstamo? \n2 - Precancelar cuotas. \n3 - Refinanciar mi préstamo. \n4 - Solicitar nuevo préstamo (solo podrás acceder a un préstamo más) \nPresioná X para finalizar.').toLowerCase();
+//Limpiar los storages
+function borrarDatos() {
+  localStorage.clear();
+  sessionStorage.clear();
+}
 
-
-
-    while (opcion != 'x') {
-
-    switch (opcion) {
-      case "1":
-        alert("Te restan " + cuotas + " cuotas para finalizar tu prestamo");
-        break;
-
-      case "2":
-        let precancelar = parseInt(
-          prompt("Ingresa cantidad de cuotas a cancelar")
-        );
-        if (precancelar <= cuotas) {
-          cuotas -= precancelar;
-
-          alert(
-            "La operación fue relizada exitosamente. Te restan " +
-            cuotas +
-            " cuotas para finalizar tu prestamo"
-          );
-        } else {
-          alert(
-            "la cantidad de cuotas a precancelar supera la totalidad de cuotas totales"
-          );
-        }
-        break;
-
-      case "3":
-        let refinanciar = parseInt(
-          prompt("Cuantas cuotas queres agregar a tu prestamo?")
-        );
-        cuotas += refinanciar;
-
-        alert(
-          "La operación fue relizada exitosamente. Tu nuevo prestamo es de " +
-          cuotas +
-          " y fue acreditado en tu caja de ahorros"
-        );
-        break;
-
- 
-
-     case "4":
-        let monto = parseInt(prompt("Qué monto necesitás?"));
-        let cuotas = prompt(
-          "En qué cantidad de cuotas lo querés? Podés elegir entre las siguientes opciones \n6 \n12 \n24"
-        );
-        let sistema =
-          prompt(
-            "Qué sistema querés que apliquemos a tu préstamo? podés elegir entre sistema francés o alemán"
-          );
-
-        alert(
-          "La operación fue relizada exitosamente. \nMONTO NUEVO PRÉSTAMO: $ " +
-          monto + " \nCANTIDAD DE CUOTAS: " + cuotas + " \nSISTEMA DE AMORTIZACIÓN: " + sistema + " \nCODIGO DE TRANSACCIÓN: " + codigo + "."
-        );
-        const nuevoPrestamo = new Prestamo(monto, cuotas, sistema, 1234);
-
-        prestamos.push(nuevoPrestamo);
-        break;
+//Recupero los datos que se guardaron y los retorno
+function recuperarUsuario(storage) {
+  let usuarioEnStorage = JSON.parse(storage.getItem('usuario'));
+  return usuarioEnStorage;
+}
 
 
-      default:
-        alert("La opcion es incorrecta");
-        break;
-    }
+//Esta función revisa si hay un usuario guardado en el storage, y en ese caso evita todo el proceso de login 
+function estaLogueado(usuario) {
 
-    opcion = prompt(
-      "Qué queres realizar hoy?: \n1- Cuántas cuotas me quedan por pagar de mi prestamo? \n2 - Precancelar cuotas. \n3 - Refinanciar mi prestamo en mas cuotas. \nPresioná X para finalizar."
-    );
+  if (usuario) {
+      saludar(usuario);
+      // mostrarInfoPrestamos(opcionesPrestamos); aca es donde necesito que se muestre un simulador de prestamos, o sea el log in
+      presentarInfo(toggles, 'd-none');
   }
-} else {
-  alert(
-    "Por favor escribinos a nuestro chat de soporte para reestablecer la contraseña"
-  );
 }
 
-alert("Gracias por operar con PrestaBank!");
+//Esta función nos permite intercambiar la visualización de los elementos del DOM, agregando o sacando la clase d-none. Si el elemento la tiene, se la saco, y si no la tiene, se la agrego. La gata Flora de las funciones sería.
+function presentarInfo(array, clase) {
+  array.forEach(element => {
+      element.classList.toggle(clase);
+  });
+}
+
+
 
