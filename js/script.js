@@ -56,7 +56,8 @@ const mailLogin = document.getElementById("emailLogin"),
   modalEl = document.getElementById("modalLogin"),
   modal = new bootstrap.Modal(modalEl),
   contTarjetas = document.getElementById("tarjetas"),
-  toggles = document.querySelectorAll(".toggles");
+  toggles = document.querySelectorAll(".toggles"),
+  btnSwal = document.getElementById("botonSwal");
 
 //Funciones
 function validarUsuario(usersDB, user, pass) {
@@ -114,8 +115,8 @@ function presentarInfo(array, clase) {
 function mostrarInfoPeliculas(array) {
   contTarjetas.innerHTML = "";
   array.forEach((element) => {
-    let html = `<div class="card cardMascota" id="tarjeta${element.nombre}">
-                <h3 class="card-header" id="nombreMascota">Nombre: ${element.nombre}</h3>
+    let html = `<div class="card cardPeli" id="tarjeta${element.nombre}">
+                <h3 class="card-header" id="nombrePeli">Nombre: ${element.nombre}</h3>
                 <img src="${element.img}" alt="${element.nombre}" class="card-img-bottom" id="fotoMascota">
                 <div class="card-body">
                     <p class="card-text" id="precioPelicula">Precio de Alquiler: ${element.precio}</p>
@@ -131,7 +132,7 @@ function mostrarInfoPeliculas(array) {
 btnLogin.addEventListener("click", (e) => {
   e.preventDefault();
 
-  /
+
   let data = validarUsuario(usuarios, mailLogin.value, passLogin.value);
 
   if (!data) {
@@ -153,6 +154,24 @@ btnLogin.addEventListener("click", (e) => {
   }
   
 });
+
+btnSwal.onclick = () => {
+  Swal.fire({
+      title: 'Bienvenid@',
+      text: '¿Todavía no te suscribiste a nuestro newsletter? Hacelo ahora y te obsequiamos 10% off sobre tu próximo alquiler',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, seguro',
+      cancelButtonText: 'No, no quiero',
+      backdrop: '#66f4ae55'
+  })
+      .then((result) => {
+          if (result.isConfirmed) {
+              //borrar(); esta función no existe, pero ustedes deberían tener alguna en su proyecto
+              Swal.fire('Borrado', 'El producto ha sido eliminado', 'success')
+          }
+      })
+}
 
 btnLogout.addEventListener("click", () => {
   borrarDatos();
