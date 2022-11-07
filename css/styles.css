@@ -48,3 +48,14 @@
     color: #ffdd0f;
 }
 
+.beneficio {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+#botonSwal {
+   margin-left: 460px;
+   margin-top: 20px;
+   margin-bottom: 20px;
+}

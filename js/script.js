@@ -128,6 +128,8 @@ function mostrarInfoPeliculas(array) {
   });
 }
 
+
+
 //Eventos 
 btnLogin.addEventListener("click", (e) => {
   e.preventDefault();
@@ -156,15 +158,17 @@ btnLogin.addEventListener("click", (e) => {
 });
 
 btnSwal.onclick = () => {
-  Swal.fire({
-      title: 'Bienvenid@',
-      text: '¿Todavía no te suscribiste a nuestro newsletter? Hacelo ahora y te obsequiamos 10% off sobre tu próximo alquiler',
-      icon: 'warning',
+  Swal.fire(
+    {
+      title: "Bienvenid@",
+      text: "Te acreditamos un cupón para 10% off en tu próxima compra",
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonText: 'Sí, seguro',
-      cancelButtonText: 'No, no quiero',
-      backdrop: '#66f4ae55'
-  })
+      confirmButtonText: "Sí, lo quiero",
+      cancelButtonText: "No, no lo quiero",
+      backdrop: "#66f4ae55"
+  }
+  )
       .then((result) => {
           if (result.isConfirmed) {
               //borrar(); esta función no existe, pero ustedes deberían tener alguna en su proyecto
