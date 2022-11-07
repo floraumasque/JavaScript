@@ -158,24 +158,24 @@ btnLogin.addEventListener("click", (e) => {
 });
 
 btnSwal.onclick = () => {
-  Swal.fire(
-    {
+  Swal.fire({
+    
       title: "Bienvenid@",
-      text: "Te acreditamos un cupón para 10% off en tu próxima compra",
+      text: "Todavía no te suscribiste a nuestro newsletter? Hacelo ahora y descubrí el beneficio que tenemos para vos!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonText: "Sí, lo quiero",
-      cancelButtonText: "No, no lo quiero",
-      backdrop: "#66f4ae55"
-  }
-  )
-      .then((result) => {
-          if (result.isConfirmed) {
-              //borrar(); esta función no existe, pero ustedes deberían tener alguna en su proyecto
-              Swal.fire('Borrado', 'El producto ha sido eliminado', 'success')
-          }
-      })
+      confirmButtonText: "Sí, me quiero suscribir",
+      cancelButtonText: "No, no me interesa",
+      backdrop: "#66f4ae22"
+    })
+    .then((result) => {
+        if (result.isConfirmed) {
+            //borrar(); esta función no existe, pero ustedes deberían tener alguna en su proyecto
+            Swal.fire('Borrado', 'El producto ha sido eliminado', 'success')
+        }
+    })
 }
+  
 
 btnLogout.addEventListener("click", () => {
   borrarDatos();
