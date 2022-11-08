@@ -128,19 +128,15 @@ function mostrarInfoPeliculas(array) {
   });
 }
 
-
-
-//Eventos 
+//Eventos
 btnLogin.addEventListener("click", (e) => {
   e.preventDefault();
-
 
   let data = validarUsuario(usuarios, mailLogin.value, passLogin.value);
 
   if (!data) {
     alert(`Usuario y/o contraseña erróneos`);
   } else {
-   
     if (recordar.checked) {
       guardarDatos(data, localStorage);
       saludar(recuperarUsuario(localStorage));
@@ -148,34 +144,33 @@ btnLogin.addEventListener("click", (e) => {
       guardarDatos(data, sessionStorage);
       saludar(recuperarUsuario(sessionStorage));
     }
-   
+
     modal.hide();
-    
+
     mostrarInfoPeliculas(peliculas);
     presentarInfo(toggles, "d-none");
   }
-  
 });
 
 btnSwal.onclick = () => {
   Swal.fire({
-    
-      title: "Bienvenid@",
-      text: "Todavía no te suscribiste a nuestro newsletter? Hacelo ahora y descubrí el beneficio que tenemos para vos!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "Sí, me quiero suscribir",
-      cancelButtonText: "No, no me interesa",
-      backdrop: "#66f4ae22"
-    })
-    .then((result) => {
-        if (result.isConfirmed) {
-            //borrar(); esta función no existe, pero ustedes deberían tener alguna en su proyecto
-            Swal.fire('Borrado', 'El producto ha sido eliminado', 'success')
-        }
-    })
-}
-  
+    title: "Bienvenid@",
+    text: "Todavía no te suscribiste a nuestro newsletter? Hacelo ahora y descubrí el beneficio que tenemos para vos!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Sí, me quiero suscribir",
+    cancelButtonText: "No, no me interesa",
+    backdrop: "#66f4ae22",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire(
+        "Felicitaciones!",
+        "Te acreditamos un 10% off en tu próximo alquiler",
+        "success"
+      );
+    }
+  });
+};
 
 btnLogout.addEventListener("click", () => {
   borrarDatos();
