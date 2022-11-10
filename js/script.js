@@ -61,7 +61,7 @@ const mailLogin = document.getElementById("emailLogin"),
   contCatalogo = document.querySelector("#contenedorCatalogo"),
   cardCatalogo = document.querySelector("#catalogo"),
   contSelector = document.querySelector("#buscadorg"),
-  btnBuscar = document.querySelector("#botonbuscar");
+  btnBuscar = document.querySelector("#buscar");
 
 //Funciones
 function validarUsuario(usersDB, user, pass) {
