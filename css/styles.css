@@ -67,3 +67,7 @@
 #buscador {
     display: flex;
 }
+
+.seleccion {
+    margin-bottom: 150px;
+}
