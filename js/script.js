@@ -57,7 +57,11 @@ const mailLogin = document.getElementById("emailLogin"),
   modal = new bootstrap.Modal(modalEl),
   contTarjetas = document.getElementById("tarjetas"),
   toggles = document.querySelectorAll(".toggles"),
-  btnSwal = document.getElementById("botonSwal");
+  btnSwal = document.getElementById("botonSwal"),
+  contCatalogo = document.querySelector("contenedorCatalogo"),
+  cardCatalogo = document.querySelector("catalogo"),
+  contSelector = document.querySelector("buscadorg"),
+  btnBuscar = document.querySelector("botonbuscar");
 
 //Funciones
 function validarUsuario(usersDB, user, pass) {
@@ -128,7 +132,47 @@ function mostrarInfoPeliculas(array) {
   });
 }
 
+function filtroPelis(array) {
+  let generoc = selectGeneroc.value;
+  if (!generoc) {
+    return array;
+  } else {
+    return array.filter((e) => e.generoc == generoc);
+  }
+}
+
+function createHTML(array) {
+  contenedor.innerHTML = "";
+  container.innerHTML = "";
+  array.forEach((pelic) => {
+    const card = `
+          <div class="col">
+              <div class="card h-100">
+                  <img src="${pelic.imagen}" class="card-img-top" alt="${pelic.peli}">
+                  <div class="card-body">
+                      <h5 class="card-title">${pelic.peli}</h5>
+                      <p class="card-text">Género: ${pelic.genero}</p>
+                      <p class="card-text">Duración: ${pelic.duracion}</p>
+                      <p class="card-text">Precio: ${pelic.precio}</p>
+                  </div>
+              </div>
+          </div>`;
+    container.innerHTML += card;
+  });
+}
+
+async function traerInfo(){
+  const response = await fetch('./js/catalogo.json'); 
+  const info = await response.json();
+  createHTML(filtroPelis(info));
+}
+
+btnBuscar.addEventListener('click',()=>{
+  traerInfo();
+})
+
 //Eventos
+
 btnLogin.addEventListener("click", (e) => {
   e.preventDefault();
 
