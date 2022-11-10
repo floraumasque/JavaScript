@@ -63,3 +63,7 @@
 #logged {
     margin-bottom: 100px;
 }
+
+#buscador {
+    display: flex;
+}
