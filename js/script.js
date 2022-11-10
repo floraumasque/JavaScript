@@ -142,8 +142,8 @@ function filtroPelis(array) {
 }
 
 function createHTML(array) {
-  contenedor.innerHTML = "";
-  container.innerHTML = "";
+  contCatalogo.innerHTML = "";
+  cardCatalogo.innerHTML = "";
   array.forEach((pelic) => {
     const card = `
           <div class="col">
