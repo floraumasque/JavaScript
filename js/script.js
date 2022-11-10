@@ -157,7 +157,7 @@ function createHTML(array) {
                   </div>
               </div>
           </div>`
-    container.innerHTML += card;
+          cardCatalogo.innerHTML += card;
   });                 
 }
 
