@@ -58,10 +58,10 @@ const mailLogin = document.getElementById("emailLogin"),
   contTarjetas = document.getElementById("tarjetas"),
   toggles = document.querySelectorAll(".toggles"),
   btnSwal = document.getElementById("botonSwal"),
-  contCatalogo = document.querySelector("contenedorCatalogo"),
-  cardCatalogo = document.querySelector("catalogo"),
-  contSelector = document.querySelector("buscadorg"),
-  btnBuscar = document.querySelector("botonbuscar");
+  contCatalogo = document.querySelector("#contenedorCatalogo"),
+  cardCatalogo = document.querySelector("#catalogo"),
+  contSelector = document.querySelector("#buscadorg"),
+  btnBuscar = document.querySelector("#botonbuscar");
 
 //Funciones
 function validarUsuario(usersDB, user, pass) {
@@ -167,9 +167,6 @@ async function traerInfo(){
   createHTML(filtroPelis(info));
 }
 
-btnBuscar.addEventListener('click',()=>{
-  traerInfo();
-})
 
 //Eventos
 
@@ -222,3 +219,8 @@ btnLogout.addEventListener("click", () => {
 });
 
 window.onload = () => estaLogueado(recuperarUsuario(localStorage));
+
+btnBuscar.addEventListener("click", () => {
+  traerInfo();
+});
+
