@@ -58,8 +58,8 @@ const mailLogin = document.getElementById("emailLogin"),
   contTarjetas = document.getElementById("tarjetas"),
   toggles = document.querySelectorAll(".toggles"),
   btnSwal = document.getElementById("botonSwal"),
-  contCatalogo = document.querySelector("#contenedorCatalogo"),
-  cardCatalogo = document.querySelector("#catalogo"),
+  contenedorCat = document.querySelector("#contenedorCatalogo"),
+  cardCatalogo = document.querySelector("#detalleCatalogo"),
   selectGeneroc = document.querySelector("#buscadorg"),
   btnBuscar = document.querySelector("#buscar");
 
@@ -142,7 +142,7 @@ function filtroPelis(array) {
 }
 
 function createHTML(array) {
-  contCatalogo.innerHTML = "";
+  contenedorCat.innerHTML = "";
   cardCatalogo.innerHTML = "";
   array.forEach((pelic) => {
     const card = `
