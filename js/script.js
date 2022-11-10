@@ -60,7 +60,7 @@ const mailLogin = document.getElementById("emailLogin"),
   btnSwal = document.getElementById("botonSwal"),
   contCatalogo = document.querySelector("#contenedorCatalogo"),
   cardCatalogo = document.querySelector("#catalogo"),
-  contSelector = document.querySelector("#buscadorg"),
+  selectGeneroc = document.querySelector("#buscadorg"),
   btnBuscar = document.querySelector("#buscar");
 
 //Funciones
@@ -156,9 +156,9 @@ function createHTML(array) {
                       <p class="card-text">Precio: ${pelic.precio}</p>
                   </div>
               </div>
-          </div>`;
+          </div>`
     container.innerHTML += card;
-  });
+  });                 
 }
 
 async function traerInfo(){
