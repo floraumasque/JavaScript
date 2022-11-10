@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "peli": "El Padrino",
+        "genero": "Drama",
+        "duracion": "2hs 20m",
+        "precio": "$1600",
+        "imagen": "https://cdn.superaficionados.com/imagenes/1-las-mejores-peliculas-de-drama-el-padrino-cke.jpg"
+    },
+    {
+        "id": 2,
+        "peli": "El ciudadano Kane",
+        "genero": "Drama",
+        "duracion": "2hs 50m",
+        "precio": "$1600",
+        "imagen": "https://cdn.superaficionados.com/imagenes/2-las-mejores-peliculas-de-drama-el-ciudadano-kane-cke.jpg"
+    },
+    {
+        "id": 3,
+        "peli": "Rescatando al soldado Ryan",
+        "genero": "Drama",
+        "duracion": "1hs 50m",
+        "precio": "$1600",
+        "imagen": "https://cdn.superaficionados.com/imagenes/9-las-mejores-peliculas-de-drama-rescatando-al-soldado-ryan-cke.jpg"
+    },
+    {
+        "id": 4,
+        "peli": "Algo pasa con Mary",
+        "genero": "Comedia",
+        "duracion": "1hs 30m",
+        "precio": "$1600",
+        "imagen": "https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/855/public/media/image/2015/08/116749-algo-pasa-mary-mejores-peliculas-comedia-risa-deberias-ver.jpg?itok=IztOc8ne"
+    },
+    {
+        "id": 5,
+        "peli": "American Pie",
+        "genero": "Comedia",
+        "duracion": "1hs 15m",
+        "precio": "$1600",
+        "imagen": "https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/855/public/media/image/2016/11/american-pie_1.jpg?itok=nRhQTz63"
+    },
+    {
+        "id": 6,
+        "peli": "Deadpool",
+        "genero": "Comedia",
+        "duracion": "2hs 05m",
+        "precio": "$1600",
+        "imagen": "https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/855/public/media/image/2017/05/deadpool.jpg?itok=Gd-yMQft"
+    },
+]

@@ -26,62 +26,125 @@
       </div>
 
       <div class="loginb">
-        <button type="button" class="btn btn-primary btn-sm toggles" data-bs-toggle="modal"
-        data-bs-target="#modalLogin">Log in</button>
+        <button
+          type="button"
+          class="btn btn-primary btn-sm toggles"
+          data-bs-toggle="modal"
+          data-bs-target="#modalLogin"
+        >
+          Log in
+        </button>
       </div>
 
       <div class="logoutb">
-        <button type="button" class="btn btn-primary btn-sm d-none toggles" id="btnLogout">Log Out</button>
+        <button
+          type="button"
+          class="btn btn-primary btn-sm d-none toggles"
+          id="btnLogout"
+        >
+          Log Out
+        </button>
       </div>
       <p id="nombreUsuario" class="d-none toggles"></p>
     </header>
 
     <main class="container">
-        <section id="guest" class="toggles">
-            
-            <p>Para ingresar al catálogo de películas recomendadas logueate <span class="linkamodal" data-bs-toggle="modal"
-                    data-bs-target="#modalLogin">aquí</span></p>
+      <section id="guest" class="toggles">
+        <p>
+          Para ingresar al catálogo de películas recomendadas logueate
+          <span
+            class="linkamodal"
+            data-bs-toggle="modal"
+            data-bs-target="#modalLogin"
+            >aquí</span
+          >
+        </p>
 
-
-            <div class="modal " id="modalLogin" tabindex="-1" aria-labelledby="modalLoginLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h3 class="modal-title" id="modalLoginLabel">Ingresá a tu cuenta</h3>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Cerrar"></button>
-                        </div>
-                        <div class="modal-body py-2 px-4">
-                            <input id="emailLogin" class="form-control my-4" type="email"
-                                placeholder="Ingresa tu correo electrónico" required>
-                            <input id="passwordLogin" class="form-control my-4" type="password"
-                                placeholder="Ingresa tu contraseña" required>
-                        </div>
-                        <div class="modal-footer d-block">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="recordarme">
-                                <label class="form-check-label" for="recordarme">
-                                    Recordar mis datos
-                                </label>
-                            </div>
-                            <button class="btn btn-outline-primary" id="login" type="submit">Ingresar</button>
-                        </div>
-                    </div>
+        <div
+          class="modal"
+          id="modalLogin"
+          tabindex="-1"
+          aria-labelledby="modalLoginLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title" id="modalLoginLabel">
+                  Ingresá a tu cuenta
+                </h3>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Cerrar"
+                ></button>
+              </div>
+              <div class="modal-body py-2 px-4">
+                <input
+                  id="emailLogin"
+                  class="form-control my-4"
+                  type="email"
+                  placeholder="Ingresa tu correo electrónico"
+                  required
+                />
+                <input
+                  id="passwordLogin"
+                  class="form-control my-4"
+                  type="password"
+                  placeholder="Ingresa tu contraseña"
+                  required
+                />
+              </div>
+              <div class="modal-footer d-block">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="recordarme"
+                  />
+                  <label class="form-check-label" for="recordarme">
+                    Recordar mis datos
+                  </label>
                 </div>
+                <button
+                  class="btn btn-outline-primary"
+                  id="login"
+                  type="submit"
+                >
+                  Ingresar
+                </button>
+              </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-        </section>
-
-        <section id="logged" class="d-none toggles">
-            <h2>En base a tus preferencias, este es el catálogo recomendado para vos</h2>
-            <p>Películas</p>
-            <div id="tarjetas" class="card-group"></div>
-            <div class="beneficio">Clickeá el siguiente botón para un beneficio FilmFan!</div>
-            <button type="button" class="btn btn-outline-primary" id="botonSwal">Beneficio FilmFan</button>
-        </section>
+      <section id="logged" class="d-none toggles">
+        <h2>
+          En base a tus preferencias, este es el catálogo recomendado para vos
+        </h2>
+        <p>Películas</p>
+        <div id="tarjetas" class="card-group"></div>
+        <div class="beneficio">
+          Clickeá el siguiente botón para un beneficio FilmFan!
+        </div>
+        <button type="button" class="btn btn-outline-primary" id="botonSwal">
+          Beneficio FilmFan
+        </button>
+        <h2>
+          No encontraste la peli que buscabas?? Tenemos más opciones para vos!
+        </h2>
+        <select class="form-select" aria-label="Default select example">
+          <option selected></option>
+          <option value="Drama">One</option>
+          <option value="Comedia">Two</option>
+        </select>
+      </section>
     </main>
 
-
+    
 
     <!-- Link a BST JS -->
     <script
