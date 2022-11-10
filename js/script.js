@@ -213,6 +213,10 @@ btnSwal.onclick = () => {
   });
 };
 
+btnBuscar.addEventListener("click", () => {
+  traerInfo();
+});
+
 btnLogout.addEventListener("click", () => {
   borrarDatos();
   presentarInfo(toggles, "d-none");
@@ -220,7 +224,5 @@ btnLogout.addEventListener("click", () => {
 
 window.onload = () => estaLogueado(recuperarUsuario(localStorage));
 
-btnBuscar.addEventListener("click", () => {
-  traerInfo();
-});
+
 
