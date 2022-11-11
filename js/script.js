@@ -157,12 +157,12 @@ function createHTML(array) {
                   </div>
               </div>
           </div>`
-          cardCatalogo.innerHTML += card;
+    cardCatalogo.innerHTML += card;
   });                 
 }
 
 async function traerInfo(){
-  const response = await fetch('./js/catalogo.json'); 
+  const response = await fetch('js/catalogo.json'); 
   const info = await response.json();
   createHTML(filtroPelis(info));
 }
