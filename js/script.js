@@ -133,11 +133,11 @@ function mostrarInfoPeliculas(array) {
 }
 
 function filtroPelis(array) {
-  let generoc = selectGeneroc.value;
-  if (!generoc) {
+  let genero = selectGeneroc.value;
+  if (!genero) {
     return array;
   } else {
-    return array.filter((e) => e.generoc == generoc);
+    return array.filter((e) => e.genero == genero);
   }
 }
 
@@ -162,7 +162,7 @@ function createHTML(array) {
 }
 
 async function traerInfo(){
-  const response = await fetch('js/catalogo.json'); 
+  const response = await fetch("js/catalogo.json"); 
   const info = await response.json();
   createHTML(filtroPelis(info));
 }
