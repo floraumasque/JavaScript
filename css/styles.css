@@ -69,6 +69,10 @@
   display: flex;
 }
 
-.seleccion {
-  margin-bottom: 150px;
+#buscar {
+    margin-top: 10px;
+}
+
+.container {
+margin-bottom: 20px;
 }
